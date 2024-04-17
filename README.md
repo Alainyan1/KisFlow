@@ -2,7 +2,7 @@
 
 fork from https://github.com/aceld/kis-flow
 
-common/为 存放我们一些公用的基础常量和一些枚举参数，还有一些工具类的方法。
+common/为存放一些公用的基础常量和一些枚举参数，还有一些工具类的方法。
 
 flow/为存放KisFlow的核心代码。
 
