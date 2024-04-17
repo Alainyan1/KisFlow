@@ -1,12 +1,12 @@
 package config
 
 import (
-	"github.com/Alainyan1/KisFLow/common"
-	"github.com/Alainyan1/KisFLow/log"
+	common "github.com/Alainyan1/KisFlow/common"
+	log "github.com/Alainyan1/KisFlow/log"
 )
 
 // FParam在当前Flow中Fucntion定制固定配置参数类型
-type FPrarm map[string]string
+type FParam map[string]string
 
 // KisSource表示当前Function的业务源
 type KisSource struct {
@@ -19,13 +19,13 @@ type KisFuncOption struct {
 	CName         string `yaml:"cname"`          // 连接器Connector的名称
 	RetryTimes    int    `yaml:"retry_times"`    // 可选，Function调度重试（不包括正常调度）最大次数
 	RetryDuration int    `yaml:"retry_duration"` // 可选，Function每次重试最大间隔时间（ms）
-	Params        FPrarm `yaml:"params"`         // 可选，在当前Flow中Function定制固定配置参数
+	Params        FParam `yaml:"params"`         // 可选，在当前Flow中Function定制固定配置参数
 }
 
 // KisFuncConfig 一个KisFunction的策略配置
 type KisFuncConfig struct {
 	KisType string        `yaml:"kis_type"`
-	Fname   string        `yaml:"fname"`
+	FName   string        `yaml:"fname"`
 	FMode   string        `yaml:"fmode"`
 	Source  KisSource     `yaml:"source"`
 	Option  KisFuncOption `yaml:"option"`
@@ -34,7 +34,7 @@ type KisFuncConfig struct {
 // 构造方法, 创建一个Function的策略配置对象，用于描述一个KisFunction信息
 func NewFuncConfig(funcName string, mode common.KisMode, source *KisSource, option *KisFuncOption) *KisFuncConfig {
 	config := new(KisFuncConfig)
-	config.Fname = funcName
+	config.FName = funcName
 
 	if source == nil {
 		log.Logger().ErrorF("funcName NewConfig Error, source is nil, funcName is %s\n", funcName)

@@ -23,3 +23,20 @@ const (
 	// 作为流式计算的自定义特征Function，如Notify调度器触发任务的消息发送，删除一些数据，重置状态等
 	E KisMode = "Expand"
 )
+
+type KisOnOff int // 0: off, 1: on
+
+const (
+	FlowEnable  KisOnOff = 1
+	FlowDisable KisOnOff = 0
+)
+
+type KisConnType string // connector的类型
+
+const (
+	REDIS KisConnType = "redis"
+	MYSQL KisConnType = "mysql"
+	KAFKA KisConnType = "kafka"
+	TIDB  KisConnType = "tidb"
+	ES    KisConnType = "es"
+)
